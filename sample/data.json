@@ -1,0 +1,62 @@
+[
+  {
+    "name": "iPad Pro 11寸",
+    "price": 6499,
+    "count": 2,
+    "amount": 12998
+  },
+  {
+    "name": "小米电视65寸",
+    "price": 3299,
+    "count": 1,
+    "amount": 3299
+  },
+  {
+    "name": "索尼WH-1000XM4耳机",
+    "price": 2299,
+    "count": 3,
+    "amount": 6897
+  },
+  {
+    "name": "Nike Air Force 1",
+    "price": 799,
+    "count": 1,
+    "amount": 799
+  },
+  {
+    "name": "戴尔XPS 13笔记本",
+    "price": 9999,
+    "count": 1,
+    "amount": 9999
+  },
+  {
+    "name": "Kindle Paperwhite",
+    "price": 998,
+    "count": 2,
+    "amount": 1996
+  },
+  {
+    "name": "华为P50 Pro",
+    "price": 5988,
+    "count": 1,
+    "amount": 5988
+  },
+  {
+    "name": "大疆Mavic Air 2",
+    "price": 4999,
+    "count": 1,
+    "amount": 4999
+  },
+  {
+    "name": "ZARA男士夹克",
+    "price": 599,
+    "count": 1,
+    "amount": 599
+  },
+  {
+    "name": "美的微波炉",
+    "price": 399,
+    "count": 1,
+    "amount": 399
+  }
+]
