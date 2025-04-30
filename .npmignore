@@ -1,0 +1,5 @@
+dist/
+sample/
+
+index.html
+vite.config.js
