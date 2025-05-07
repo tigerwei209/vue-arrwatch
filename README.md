@@ -4,7 +4,9 @@
 
 ## 使用
 
+```
 npm i vue-arrwatch
+```
 
 ```
 import ArrWatch from 'vue-arrwatch'
@@ -35,12 +37,13 @@ export default {
   },
   arrWatch: {
     arrData: {
-      handle: function (newValue, oldValue, top, parent) {
+      handle: function (newValue, oldValue, parent) {
         console.log('arrData changed', newValue, oldValue)
       },
       item: {
-        count: function (newValue, oldValue, top, parent) {
-        parent.amount = parent.price * parent.count
+        count: function (newValue, oldValue, parent) {
+          const { self } = parent
+          self.amount = self.price * self.count
         }
       }
     }

@@ -51,29 +51,61 @@ export default {
           name: 'iPhone 12',
           price: 6999,
           count: 1,
+          subItem: [{
+            name: 'ip12 si1',
+            count: 1
+          }, {
+            name: 'ip12 si2',
+            count: 1
+          }],
           amount: 6999
         }, {
           name: 'MacBook Pro',
           price: 23999,
           count: 1,
+          subItem: [{
+            name: 'mbp si1',
+            count: 1
+          }, {
+            name: 'mbp si2',
+            count: 1
+          }],
           amount: 23999
         }, {
           name: 'AirPods',
           price: 1999,
           count: 1,
+          subItem: [{
+            name: 'ap si1',
+            count: 1
+          }, {
+            name: 'ap si2',
+            count: 1
+          }],
           amount: 1999
         }]
     }
   },
   arrWatch: {
     arrData: {
-      handle: function (newValue, oldValue, top, parent) {
-        console.log('arrData changed', newValue, oldValue)
+      handle: function (newValue, oldValue, parent) {
+        console.log('arrData changed', newValue, oldValue, parent)
       },
       item: {
-        count: function (newValue, oldValue, top, parent) {
-          parent.amount = parent.price * parent.count
-        }
+        count: function (newValue, oldValue, parent) {
+          const { self } = parent
+          self.amount = self.price * self.count
+        },
+        // subItem: {
+        //   handle: function (newValue, oldValue, parent) {
+        //     console.log('subItem changed', newValue, oldValue, parent)
+        //   },
+        //   item: {
+        //     count: function (newValue, oldValue, parent) {
+        //       console.log('subItem.count changed', newValue, oldValue, parent)
+        //     }
+        //   }
+        // }
       }
     }
   },
