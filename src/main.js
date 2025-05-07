@@ -12,11 +12,11 @@ export default {
     _arrWatch (val, watch, watchers, top, parent) {
       return this.$watch(val, function (newValue, oldValue) {
         if (watch.handle) {
-          watch.handle(newValue, oldValue, top, parent)
+          watch.handle.call(this, newValue, oldValue, top, parent)
         }
         // 移除数组中丢失数据的监听
         const lostedData = watchers.keys().filter(key => {
-          return newValue?.some(v => v === key)
+          return !newValue?.some(v => v === key)
         })
         lostedData.forEach(key => {
           watchers.get(key).forEach(unwatch => {
@@ -34,7 +34,7 @@ export default {
             for (const key in watch.item) {
               if (watch.item[key] instanceof Function) {
                 const unwatch = this.$watch(() => item[key], function (v, ov) {
-                  watch.item[key](v, ov, top, item)
+                  watch.item[key].call(this, v, ov, top, item)
                 }, { immediate: true })
                 itemWatchers.push(unwatch)
               } else if (watch.item[key] instanceof Object) {
