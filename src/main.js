@@ -18,10 +18,16 @@ export default {
         const lostedData = watchers.keys().filter(key => {
           return !newValue?.some(v => v === key)
         })
+        const unwatch = item => {
+          if (item instanceof Function) {
+            item()
+          } else {
+            // array or map
+            item.values().forEach(unwatch)
+          }
+        }
         lostedData.forEach(key => {
-          watchers.get(key).forEach(unwatch => {
-            unwatch()
-          })
+          watchers.get(key).forEach(unwatch)
           watchers.delete(key)
         })
         if (watch.item) {
@@ -38,7 +44,9 @@ export default {
                 }, { immediate: true })
                 itemWatchers.push(unwatch)
               } else if (watch.item[key] instanceof Object) {
-                const unwatch = this._arrWatch(() => item[key], watch.item[key], watchers, top, item)
+                const subWatchers = new Map()
+                const unwatch = this._arrWatch(() => item[key], watch.item[key], subWatchers, top, item)
+                itemWatchers.push(subWatchers)
                 itemWatchers.push(unwatch)
               }
             }
