@@ -19,7 +19,7 @@ export default {
           watch.handle.call(this, newValue, oldValue, parent())
         }
         // 移除数组中丢失数据的监听
-        const lostedData = watchers.keys().filter(key => {
+        const lostedData = [...watchers.keys()].filter(key => {
           return !newValue?.some(v => v === key)
         })
         const unwatch = item => {
@@ -27,7 +27,7 @@ export default {
             item()
           } else {
             // array or map
-            item.values().forEach(unwatch)
+            [...item.values()].forEach(unwatch)
           }
         }
         lostedData.forEach(key => {
